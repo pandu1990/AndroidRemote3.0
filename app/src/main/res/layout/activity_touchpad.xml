@@ -1,0 +1,33 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#b6c5ca"
+    android:id="@+id/relativeLayoutTouchpad"
+    tools:context="com.pandu.remotemouse.Touchpad">
+
+    <EditText
+        android:id="@+id/editTextContent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="-100dp"
+        android:ems="10"
+        android:inputType="textNoSuggestions|textMultiLine|textVisiblePassword"
+        android:imeOptions="flagNoExtractUi"
+        android:maxHeight="32dp"
+        android:text="Starting text">
+    </EditText>
+
+    <ImageButton
+        android:id="@+id/buttonShowKeyboard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/keyboard"
+        android:layout_gravity="bottom" />
+
+</RelativeLayout>
