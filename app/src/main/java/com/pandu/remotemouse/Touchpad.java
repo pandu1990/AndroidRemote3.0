@@ -343,7 +343,7 @@ public class Touchpad extends AppCompatActivity {
                                 }
                                 float slope1 = Math.abs(dy1 / dx1);
                                 if (slope1 > 1) {
-                                    if (dy1 > 00)
+                                    if (dy1 > 0)
                                         sendData("scroll " + dy1);
                                     else if (dy1 < 0)
                                         sendData("scroll " + dy1);
@@ -384,8 +384,7 @@ public class Touchpad extends AppCompatActivity {
             } else if (event.getAction() == KeyEvent.ACTION_UP) {
                 switch (keyCode) {
                     case KeyEvent.KEYCODE_BACK:
-                        Intent i = new Intent(Touchpad.this,
-                                MainActivity.class);
+                        Intent i = new Intent(Touchpad.this, MainActivity.class);
                         startActivity(i);
                         finish();
                         return true;

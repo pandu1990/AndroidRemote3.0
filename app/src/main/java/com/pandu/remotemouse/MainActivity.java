@@ -24,15 +24,17 @@ public class MainActivity extends AppCompatActivity {
     String filename;
     SharedPreferences prefs;
     int MAX_HOSTS;
-    LinkedList<String> ipSet = new LinkedList<String>();
+    LinkedList<String> ipSet = new LinkedList<>();
     ListView listViewIPAddresses;
     EditText editTextIPAddress;
 
     private void addIpToList(String ipAddress) {
         if (ipSet.contains(ipAddress)) {
             ipSet.remove(ipAddress);
-        } else if (ipSet.size() == MAX_HOSTS) {
-            ipSet.remove(MAX_HOSTS - 1);
+        } else if (ipSet.size() >= MAX_HOSTS) {
+            for(int i = MAX_HOSTS; i < ipSet.size(); i++) {
+                ipSet.remove(i);
+            }
         }
         ipSet.add(0, ipAddress);
         SharedPreferences.Editor e = prefs.edit();
@@ -40,6 +42,8 @@ public class MainActivity extends AppCompatActivity {
         for (int i = 0; i < ipSet.size(); i++) {
             e.putString("IP" + i, ipSet.get(i));
         }
+        //save MAX_HOSTS
+        e.putInt("MAX_HOSTS", MAX_HOSTS);
         e.commit();
     }
 
@@ -59,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
         }
         if (ipSet.size() > 0) {
             String[] listIps = getIpsFromList();
-            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+            ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
                     android.R.layout.simple_list_item_1, listIps);
             listViewIPAddresses.setAdapter(adapter);
             findViewById(R.id.textViewRecentHosts).setVisibility(View.VISIBLE);
@@ -73,10 +77,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        filename = (String) getString(R.string.app_name);
-        MAX_HOSTS = Integer.parseInt(getString(R.string.max_hosts));
-
+        filename = getString(R.string.app_name);
         prefs = getSharedPreferences(filename, 0);
+        MAX_HOSTS = prefs.getInt("MAX_HOSTS", Integer.parseInt(getString(R.string.max_hosts)));
+
         listViewIPAddresses = (ListView) findViewById(R.id.listViewIPAddresses);
         setListValues();
 
@@ -100,10 +104,12 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menuItemHelp:
-                Toast.makeText(MainActivity.this, "Help", Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(MainActivity.this, HelpActivity.class);
+                startActivity(i);
                 return true;
             case R.id.menuItemSettings:
-                Toast.makeText(MainActivity.this, "Settings", Toast.LENGTH_SHORT).show();
+                i = new Intent(MainActivity.this, SettingsActivity.class);
+                startActivity(i);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
