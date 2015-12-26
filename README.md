@@ -9,9 +9,10 @@ The application requires Android Remote server to be running on the computer. Ju
 
 * Move finger over the screen to move mouse pointer
 * Tap with single finger for left-click
+* Double tap with one finger to left-click and drag 
 * Tap with two fingers for right-click
 * Move two fingers up/down to scroll
-
-* Keyboard works best when autocorrect and word suggestions are turned off
+* Volume up and down - Simulates LEFT and RIGHT arrow keys (useful for moving cursor and presentations)
+* The keyboard icon pops up the keyboard. 
 
 ### Download the APK [here](executables/AndroidRemote.apk?raw=true)
