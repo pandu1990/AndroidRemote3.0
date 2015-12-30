@@ -16,3 +16,5 @@ The application requires Android Remote server to be running on the computer. Ju
 * The keyboard icon pops up the keyboard. 
 
 ### Download the APK [here](executables/AndroidRemote.apk?raw=true)
+
+### Server software available [here](../AndroidRemoteServer)
