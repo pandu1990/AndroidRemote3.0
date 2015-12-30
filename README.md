@@ -17,4 +17,4 @@ The application requires Android Remote server to be running on the computer. Ju
 
 ### Download the APK [here](executables/AndroidRemote.apk?raw=true)
 
-### Server software available [here](../AndroidRemoteServer)
+### Server software available [here](https://github.com/pandu1990/AndroidRemoteServer)
